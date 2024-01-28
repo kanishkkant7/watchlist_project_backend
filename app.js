@@ -19,9 +19,9 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-// Rest of your code...
 
-// Define the schema for the watchlist item
+
+// Schema
 const watchlistSchema = new mongoose.Schema({
   name: String,
   platform: String,
@@ -29,7 +29,7 @@ const watchlistSchema = new mongoose.Schema({
   link: String,
 });
 
-// Create a model based on the schema
+// Model creation
 const WatchlistItem = mongoose.model('WatchlistItem', watchlistSchema);
 
 
@@ -66,7 +66,7 @@ app.put('/watchlist/:name', async (req, res) => {
       const updatedItem = await WatchlistItem.findOneAndUpdate(
         { name: itemName },
         updatedItemData,
-        { new: true } // Return the updated document
+        { new: true } 
       );
   
       if (!updatedItem) {
